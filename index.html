@@ -3,40 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Protótipo gratuito do painel MU Legacy Arena: inventário, editor, rankings e TradePay demonstrativo." />
-  <title>MU Legacy Arena — Portal DEMO</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0b111b" />
+  <meta name="description" content="MU Legacy Arena: PvP clássico, guildas, rankings, eventos, portal do jogador e suporte." />
+  <title>MU Legacy Arena | A lenda continua</title>
+  <link rel="stylesheet" href="public.css" />
 </head>
 <body>
-  <div class="shell">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand"><div class="brand-mark">⚔</div><div><strong>MU LEGACY</strong><small>ARENA · 2017 EXPERIENCE</small></div></div>
-      <div class="demo-chip">● MODO DEMONSTRAÇÃO</div>
-      <p class="nav-label">NAVEGAÇÃO</p>
-      <nav id="nav" aria-label="Menu principal">
-        <a href="#inicio" data-page="inicio"><span>⌂</span> Visão geral</a>
-        <a href="#personagens" data-page="personagens"><span>♜</span> Personagens</a>
-        <a href="#editor" data-page="editor"><span>⚒</span> Editor de itens</a>
-        <a href="#ranking" data-page="ranking"><span>♛</span> Ranking PvP</a>
-        <a href="#premios" data-page="premios"><span>✦</span> Premiações</a>
-        <a href="#mercado" data-page="mercado"><span>◇</span> Mercado TradePay</a>
-        <a href="#carteira" data-page="carteira"><span>▣</span> Carteira</a>
-        <a href="#admin" data-page="admin"><span>⚙</span> Administração</a>
-        <a href="#regras" data-page="regras"><span>ⓘ</span> Regras</a>
-      </nav>
-      <div class="sidebar-bottom"><p><b>SEM GAME SERVER</b></p><small>Interface independente, sem Pix real e sem qualquer acesso a inventários de jogadores.</small></div>
+  <div class="thin-bar"><div class="wide thin-inner"><span>⚔ MU LEGACY ARENA <em>• projeto independente</em></span><span class="tiny-dim">BK · SM · ME · MG · DL <span class="sep">|</span> <span class="offline-dot"></span> GameServer em preparação</span></div></div>
+  <header class="masthead" id="topo"><div class="wide mast-inner">
+    <a class="logo" href="#home" aria-label="MU Legacy Arena - início"><span class="logo-medallion">⚔</span><span class="logo-words"><b>MU <i>LEGACY</i></b><small>A R E N A</small></span></a>
+    <div class="mast-info"><span>O LEGADO DO PVP</span><strong>UMA NOVA HISTÓRIA COMEÇA AQUI</strong><small>Guerras de guildas · Eventos oficiais · Economia entre jogadores</small></div>
+    <a class="btn-gold mast-cta" href="#cadastro">CRIAR MINHA CONTA <span>↗</span></a>
+  </div></header>
+  <div class="nav-wrap"><nav class="wide primary-nav" aria-label="Navegação principal">
+    <a href="#home" data-nav="home">⌂ <span>INÍCIO</span></a>
+    <a href="#cadastro" data-nav="cadastro">✦ <span>CADASTRO</span></a>
+    <a href="#downloads" data-nav="downloads">⇩ <span>DOWNLOADS</span></a>
+    <a href="#ranking" data-nav="ranking">♛ <span>RANKING</span></a>
+    <a href="#eventos" data-nav="eventos">⚔ <span>EVENTOS</span></a>
+    <a href="#loja" data-nav="loja">◇ <span>LOJA</span></a>
+    <a href="#guildas" data-nav="guildas">⚑ <span>GUILDAS</span></a>
+    <a href="#suporte" data-nav="suporte">❔ <span>AJUDA</span></a>
+  </nav></div>
+  <main class="wide main-shell">
+    <aside class="left-col">
+      <section class="panel" id="account-card"><div class="panel-title"><span>◈</span> PAINEL DO JOGADOR</div>
+        <div class="login-heading">Bem-vindo, guerreiro!</div>
+        <p class="dim tiny">Gerencie sua conta, personagem e equipamentos.</p>
+        <form id="login-form" class="login-form"><label for="login-email">E-mail</label><input id="login-email" type="email" autocomplete="email" placeholder="Seu e-mail" required /><label for="login-password">Senha</label><input id="login-password" type="password" autocomplete="current-password" placeholder="Sua senha" required/><button class="btn-gold wide-button" type="submit">ENTRAR NA CONTA →</button></form>
+        <div id="session-panel" hidden></div><div class="tiny auth-hint" id="auth-hint">Login real disponível quando o backend estiver hospedado.</div>
+        <div class="account-links"><a href="#cadastro">Criar conta</a><a href="portal.html#personagens">Painel de teste ↗</a></div>
+      </section>
+      <section class="panel server-status"><div class="panel-title"><span>◉</span> STATUS DO SERVIDOR</div><div class="status-line"><span class="offline-dot"></span><b>Em preparação</b></div><p class="tiny dim">Ainda não existe GameServer público conectado. Os rankings e personagens exibidos são demonstrativos.</p><div class="status-row"><span>Versão desejada</span><b>Clássica + DL</b></div><div class="status-row"><span>Classes</span><b>05</b></div><div class="status-row"><span>Editor web</span><b>Até +11</b></div><div class="status-row"><span>Itens especiais</span><b>Até +15</b></div></section>
+      <section class="panel side-buttons"><div class="panel-title"><span>✧</span> ACESSO RÁPIDO</div><a href="portal.html#editor">⚒ <span>Editor de itens</span> ↗</a><a href="portal.html#mercado">◇ <span>Mercado de equipamentos</span> ↗</a><a href="portal.html#admin">⚙ <span>Painel ADM demonstrativo</span> ↗</a><a href="staff.html">☷ <span>Central da equipe</span> ↗</a></section>
     </aside>
-    <div class="workspace">
-      <header class="topbar">
-        <button class="menu-btn" data-action="menu" title="Menu" aria-label="Abrir menu">☰</button>
-        <div class="crumb"><span>PORTAL</span><span class="crumb-sep">/</span><strong id="current-page">Visão geral</strong></div>
-        <div class="top-right"><span class="online-tag">◌ Servidor desconectado</span><span class="account">👤 Conta de teste</span></div>
-      </header>
-      <main id="app" role="main"></main>
-      <footer class="footer">MU Legacy Arena · Protótipo independente de Lovable · Nenhum valor financeiro ou item real é movimentado.</footer>
-    </div>
-  </div>
+    <div class="center-col" id="dynamic-content" aria-live="polite"></div>
+    <aside class="right-col"><section class="panel ranking-panel"><div class="panel-title"><span>♛</span> TOP JOGADORES <small>DEMONSTRAÇÃO</small></div><div class="mini-tabs" id="ranking-tabs"><button data-rank="semana" class="on">SEMANA</button><button data-rank="mes">MÊS</button><button data-rank="guildas">GUILDAS</button></div><div id="ranking-preview"></div><a href="#ranking" class="panel-bottom-link">CONFERIR TODOS OS RANKINGS →</a></section>
+    <section class="panel"><div class="panel-title"><span>⌛</span> PRÓXIMOS EVENTOS</div><div class="event-row"><span class="event-icon">⚔</span><div><strong>Mata-Mata diário</strong><small>Ranking oficial · Em planejamento</small></div></div><div class="event-row"><span class="event-icon">✦</span><div><strong>Competição semanal</strong><small>2 partes de um set +13</small></div></div><div class="event-row"><span class="event-icon">♛</span><div><strong>Campeão do mês</strong><small>Arma Full +15 à escolha</small></div></div><a href="#eventos" class="panel-bottom-link">VER PROGRAMAÇÃO →</a></section>
+    <section class="panel"><div class="panel-title"><span>◈</span> COMUNIDADE</div><p class="tiny dim">A nossa prioridade será recuperar as amizades, rivalidades e guerras de guilda que tornavam o MU clássico especial.</p><a class="btn-outline wide-button" href="#guildas">CONHECER O PROJETO</a></section></aside>
+  </main>
+  <footer><div class="wide footer-grid"><div><b class="footer-brand">⚔ MU LEGACY ARENA</b><p>Portal de desenvolvimento independente. Referência na experiência clássica de PvP, sem afiliação ao MuAwaY ou à WEBZEN.</p></div><div><strong>COMUNIDADE</strong><a href="#ranking">Rankings</a><a href="#eventos">Eventos</a><a href="#guildas">Guildas</a></div><div><strong>SUPORTE</strong><a href="#suporte">Central de ajuda</a><a href="staff.html">Painel da equipe</a><a href="portal.html#regras">Regras</a></div></div><div class="wide copyright">© MU Legacy Arena — Protótipo de desenvolvimento. Sem servidor ou pagamentos reais.</div></footer>
+  <button class="chat-launch" id="chat-launch" aria-label="Abrir atendimento">☏ <span>CHAT COM MODERADOR</span><span class="chat-counter" id="chat-counter" hidden>!</span></button>
+  <section id="chat-window" class="chat-window" hidden aria-label="Atendimento"><div class="chat-header"><div><b>⚔ Suporte MU Legacy</b><small id="chat-state">Atendimento por moderador</small></div><button id="chat-close" aria-label="Fechar chat">×</button></div><div class="chat-log" id="chat-log"><p class="chat-notice">Bem-vindo! O atendimento humano ficará disponível quando o sistema de suporte estiver conectado.</p></div><form class="chat-form" id="chat-form"><input name="display_name" id="chat-name" placeholder="Seu nome no jogo" maxlength="40" aria-label="Nome no jogo"><textarea name="message" id="chat-message" maxlength="1500" rows="2" placeholder="Escreva sua mensagem…" required aria-label="Mensagem"></textarea><button class="btn-gold" type="submit">ENVIAR ↗</button></form><div class="chat-footnote">O atendimento não é um robô. Um membro da equipe precisa estar online para responder.</div></section>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="public.js" defer></script>
+  <script src="chat-live.js" defer></script>
 </body>
 </html>
