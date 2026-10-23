@@ -3,50 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b111b" />
-  <meta name="description" content="MU Legacy Arena: PvP clássico, guildas, rankings, eventos, portal do jogador e suporte." />
-  <title>MU Legacy Arena | A lenda continua</title>
+  <meta name="theme-color" content="#101113" />
+  <meta name="description" content="MU EC — MU 100% Editável. Conheça o projeto de PvP clássico, as cinco classes, eventos e o painel do jogador." />
+  <title>MU EC — MU 100% Editável</title>
   <link rel="stylesheet" href="public.css" />
 </head>
 <body>
-  <div class="thin-bar"><div class="wide thin-inner"><span>⚔ MU LEGACY ARENA <em>• projeto independente</em></span><span class="tiny-dim">BK · SM · ME · MG · DL <span class="sep">|</span> <span class="offline-dot"></span> GameServer em preparação</span></div></div>
-  <header class="masthead" id="topo"><div class="wide mast-inner">
-    <a class="logo" href="#home" aria-label="MU Legacy Arena - início"><span class="logo-medallion">⚔</span><span class="logo-words"><b>MU <i>LEGACY</i></b><small>A R E N A</small></span></a>
-    <div class="mast-info"><span>O LEGADO DO PVP</span><strong>UMA NOVA HISTÓRIA COMEÇA AQUI</strong><small>Guerras de guildas · Eventos oficiais · Economia entre jogadores</small></div>
-    <a class="btn-gold mast-cta" href="#cadastro">CRIAR MINHA CONTA <span>↗</span></a>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="thin-bar"><div class="wide thin-inner"><span><i class="status-dot"></i> PROJETO EM DESENVOLVIMENTO</span><div><a href="#equipe">Equipe</a><span>·</span><a href="#downloads">Downloads</a><a href="portal.html#conta">Minha conta ↗</a></div></div></div>
+  <header class="masthead"><div class="wide mast-inner">
+    <a class="logo" href="#home" aria-label="MU EC — início"><span class="logo-medallion" aria-hidden="true">EC</span><span class="logo-words"><b>MU <i>EC</i></b><small>MU 100% EDITÁVEL</small></span></a>
+    <div class="mast-info"><span>O CLÁSSICO ENCONTRA SUA PRÓXIMA HISTÓRIA</span><strong>Seu equipamento. Sua estratégia. Sua vitória.</strong><small>BK · SM · ME · MG · DL</small></div>
+    <a class="btn-gold mast-cta" href="#cadastro">CRIAR CONTA <span aria-hidden="true">↗</span></a>
   </div></header>
   <div class="nav-wrap"><nav class="wide primary-nav" aria-label="Navegação principal">
-    <a href="#home" data-nav="home">⌂ <span>INÍCIO</span></a>
-    <a href="#cadastro" data-nav="cadastro">✦ <span>CADASTRO</span></a>
-    <a href="#downloads" data-nav="downloads">⇩ <span>DOWNLOADS</span></a>
-    <a href="#ranking" data-nav="ranking">♛ <span>RANKING</span></a>
-    <a href="#eventos" data-nav="eventos">⚔ <span>EVENTOS</span></a>
-    <a href="#loja" data-nav="loja">◇ <span>LOJA</span></a>
-    <a href="#guildas" data-nav="guildas">⚑ <span>GUILDAS</span></a>
-    <a href="#suporte" data-nav="suporte">❔ <span>AJUDA</span></a>
+    <a href="#home" data-nav="home">INÍCIO</a><a href="#noticias" data-nav="noticias">NOTÍCIAS</a><a href="#ranking" data-nav="ranking">RANKINGS</a><a href="#eventos" data-nav="eventos">EVENTOS</a><a href="#guildas" data-nav="guildas">COMUNIDADE</a><a href="#loja" data-nav="loja">SHOP</a><a href="#suporte" data-nav="suporte">SUPORTE</a>
   </nav></div>
-  <main class="wide main-shell">
-    <aside class="left-col">
-      <section class="panel" id="account-card"><div class="panel-title"><span>◈</span> PAINEL DO JOGADOR</div>
-        <div class="login-heading">Bem-vindo, guerreiro!</div>
-        <p class="dim tiny">Gerencie sua conta, personagem e equipamentos.</p>
-        <form id="login-form" class="login-form"><label for="login-email">E-mail</label><input id="login-email" type="email" autocomplete="email" placeholder="Seu e-mail" required /><label for="login-password">Senha</label><input id="login-password" type="password" autocomplete="current-password" placeholder="Sua senha" required/><button class="btn-gold wide-button" type="submit">ENTRAR NA CONTA →</button></form>
-        <div id="session-panel" hidden></div><div class="tiny auth-hint" id="auth-hint">Login real disponível quando o backend estiver hospedado.</div>
-        <div class="account-links"><a href="#cadastro">Criar conta</a><a href="portal.html#personagens">Painel de teste ↗</a></div>
+  <main class="wide main-shell" id="conteudo">
+    <aside class="left-col" aria-label="Conta e informações do projeto">
+      <section class="panel" id="account-card"><div class="panel-title"><span aria-hidden="true">◈</span> PAINEL DO JOGADOR</div>
+        <div class="login-heading">Sua próxima jornada</div><p class="dim tiny panel-copy">Entre na sua conta do portal.</p>
+        <form id="login-form" class="login-form"><label for="login-email">E-mail</label><input id="login-email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="160" required /><label for="login-password">Senha</label><input id="login-password" type="password" autocomplete="current-password" placeholder="Sua senha" maxlength="256" required /><button class="btn-gold wide-button" type="submit">ENTRAR NA CONTA →</button></form>
+        <div id="session-panel" hidden></div><div class="tiny auth-hint" id="auth-hint" role="status">Verificando conexão com o portal…</div>
+        <div class="account-links"><a href="#cadastro">Criar conta</a><a href="portal.html#inicio">Explorar painel ↗</a></div>
       </section>
-      <section class="panel server-status"><div class="panel-title"><span>◉</span> STATUS DO SERVIDOR</div><div class="status-line"><span class="offline-dot"></span><b>Em preparação</b></div><p class="tiny dim">Ainda não existe GameServer público conectado. Os rankings e personagens exibidos são demonstrativos.</p><div class="status-row"><span>Versão desejada</span><b>Clássica + DL</b></div><div class="status-row"><span>Classes</span><b>05</b></div><div class="status-row"><span>Editor web</span><b>Até +11</b></div><div class="status-row"><span>Itens especiais</span><b>Até +15</b></div></section>
-      <section class="panel side-buttons"><div class="panel-title"><span>✧</span> ACESSO RÁPIDO</div><a href="portal.html#editor">⚒ <span>Editor de itens</span> ↗</a><a href="portal.html#mercado">◇ <span>Mercado de equipamentos</span> ↗</a><a href="portal.html#admin">⚙ <span>Painel ADM demonstrativo</span> ↗</a><a href="staff.html">☷ <span>Central da equipe</span> ↗</a></section>
+      <section class="panel server-status"><div class="panel-title"><span aria-hidden="true">◉</span> O MUNDO MU EC</div><div class="status-line"><i class="status-dot"></i><b>GameServer em preparação</b></div><p class="tiny dim panel-copy">O site está em desenvolvimento. Personagens, itens e resultados de jogo ainda são demonstrações.</p><dl class="status-list"><div><dt>Classes planejadas</dt><dd>BK · SM · ME · MG · DL</dd></div><div><dt>Editor do jogador</dt><dd>+0 até +11</dd></div><div><dt>Níveis especiais</dt><dd>+12 até +15</dd></div><div><dt>Proposta</dt><dd>PvP competitivo</dd></div></dl></section>
+      <section class="panel side-buttons"><div class="panel-title">ACESSO RÁPIDO</div><a href="portal.html#personagens"><span>Personagens</span> ↗</a><a href="portal.html#editor"><span>Editor de itens <small>DEMO</small></span> ↗</a><a href="portal.html#regras"><span>Regras do projeto</span> ↗</a><a href="#downloads"><span>Central de downloads</span> →</a></section>
     </aside>
     <div class="center-col" id="dynamic-content" aria-live="polite"></div>
-    <aside class="right-col"><section class="panel ranking-panel"><div class="panel-title"><span>♛</span> TOP JOGADORES <small>DEMONSTRAÇÃO</small></div><div class="mini-tabs" id="ranking-tabs"><button data-rank="semana" class="on">SEMANA</button><button data-rank="mes">MÊS</button><button data-rank="guildas">GUILDAS</button></div><div id="ranking-preview"></div><a href="#ranking" class="panel-bottom-link">CONFERIR TODOS OS RANKINGS →</a></section>
-    <section class="panel"><div class="panel-title"><span>⌛</span> PRÓXIMOS EVENTOS</div><div class="event-row"><span class="event-icon">⚔</span><div><strong>Mata-Mata diário</strong><small>Ranking oficial · Em planejamento</small></div></div><div class="event-row"><span class="event-icon">✦</span><div><strong>Competição semanal</strong><small>2 partes de um set +13</small></div></div><div class="event-row"><span class="event-icon">♛</span><div><strong>Campeão do mês</strong><small>Arma Full +15 à escolha</small></div></div><a href="#eventos" class="panel-bottom-link">VER PROGRAMAÇÃO →</a></section>
-    <section class="panel"><div class="panel-title"><span>◈</span> COMUNIDADE</div><p class="tiny dim">A nossa prioridade será recuperar as amizades, rivalidades e guerras de guilda que tornavam o MU clássico especial.</p><a class="btn-outline wide-button" href="#guildas">CONHECER O PROJETO</a></section></aside>
+    <aside class="right-col" aria-label="Rankings e eventos">
+      <section class="panel ranking-panel"><div class="panel-title"><span aria-hidden="true">♛</span> HALL DA FAMA <small>DEMO</small></div><div class="mini-tabs" id="ranking-tabs" aria-label="Período do ranking"><button data-rank="dia" type="button">DIA</button><button data-rank="semana" type="button">SEMANA</button><button data-rank="mes" type="button">MÊS</button></div><div id="ranking-preview"></div><p class="rank-disclaimer">Exemplos visuais · sem resultados reais</p><a href="#ranking" class="panel-bottom-link">EXPLORAR RANKINGS →</a></section>
+      <section class="panel"><div class="panel-title"><span aria-hidden="true">✦</span> CONQUISTE SEU LEGADO</div><div class="event-row"><span class="event-icon" aria-hidden="true">Ⅰ</span><div><strong>Ranking diário</strong><small>Reconhecimento e Golds previstos</small></div></div><div class="event-row"><span class="event-icon" aria-hidden="true">Ⅱ</span><div><strong>Campeão semanal</strong><small>2 partes distintas do mesmo set +13</small></div></div><div class="event-row"><span class="event-icon" aria-hidden="true">Ⅲ</span><div><strong>Campeão mensal</strong><small>Arma Full Excellent +15 por classe</small></div></div><p class="rank-disclaimer">Premiações planejadas · eventos ainda não ativos</p><a href="#eventos" class="panel-bottom-link">CONHECER OS EVENTOS →</a></section>
+      <section class="community-card"><span class="eyebrow">FEITO PARA JOGAR JUNTO</span><h2>O nome da sua guilda.<br />A força da sua história.</h2><p>Amizade, rivalidade e batalhas que merecem ser lembradas.</p><a href="#guildas">CONHEÇA A COMUNIDADE →</a></section>
+    </aside>
   </main>
-  <footer><div class="wide footer-grid"><div><b class="footer-brand">⚔ MU LEGACY ARENA</b><p>Portal de desenvolvimento independente. Referência na experiência clássica de PvP, sem afiliação ao MuAwaY ou à WEBZEN.</p></div><div><strong>COMUNIDADE</strong><a href="#ranking">Rankings</a><a href="#eventos">Eventos</a><a href="#guildas">Guildas</a></div><div><strong>SUPORTE</strong><a href="#suporte">Central de ajuda</a><a href="staff.html">Painel da equipe</a><a href="portal.html#regras">Regras</a></div></div><div class="wide copyright">© MU Legacy Arena — Protótipo de desenvolvimento. Sem servidor ou pagamentos reais.</div></footer>
-  <button class="chat-launch" id="chat-launch" aria-label="Abrir atendimento">☏ <span>CHAT COM MODERADOR</span><span class="chat-counter" id="chat-counter" hidden>!</span></button>
-  <section id="chat-window" class="chat-window" hidden aria-label="Atendimento"><div class="chat-header"><div><b>⚔ Suporte MU Legacy</b><small id="chat-state">Atendimento por moderador</small></div><button id="chat-close" aria-label="Fechar chat">×</button></div><div class="chat-log" id="chat-log"><p class="chat-notice">Bem-vindo! O atendimento humano ficará disponível quando o sistema de suporte estiver conectado.</p></div><form class="chat-form" id="chat-form"><input name="display_name" id="chat-name" placeholder="Seu nome no jogo" maxlength="40" aria-label="Nome no jogo"><textarea name="message" id="chat-message" maxlength="1500" rows="2" placeholder="Escreva sua mensagem…" required aria-label="Mensagem"></textarea><button class="btn-gold" type="submit">ENVIAR ↗</button></form><div class="chat-footnote">O atendimento não é um robô. Um membro da equipe precisa estar online para responder.</div></section>
+  <footer><div class="wide footer-grid"><div><a class="footer-brand" href="#home">MU <span>EC</span></a><p>MU 100% Editável. Um projeto independente de PvP clássico, construído com identidade própria.</p><p class="footer-disclaimer">Sem afiliação à WEBZEN ou ao MuAwaY. GameServer e pagamentos não estão disponíveis.</p></div><div><strong>EXPLORE</strong><a href="#noticias">Notícias</a><a href="#eventos">Eventos</a><a href="#guildas">Comunidade</a><a href="#equipe">Equipe</a></div><div><strong>PRECISA DE AJUDA?</strong><a href="#suporte">Suporte e perguntas frequentes</a><a href="#termos">Termos do protótipo</a><a href="#privacidade">Privacidade</a><a href="staff.html">Central da equipe ↗</a></div></div><div class="wide copyright"><span>© MU EC · Portal em desenvolvimento</span><span>Seu equipamento. Sua estratégia. Sua vitória.</span></div></footer>
+  <button class="chat-launch" id="chat-launch" aria-label="Abrir suporte humano" aria-controls="chat-window" aria-expanded="false"><span aria-hidden="true">☏</span> SUPORTE HUMANO</button>
+  <section id="chat-window" class="chat-window" hidden role="dialog" aria-labelledby="chat-title"><div class="chat-header"><div><b id="chat-title">SUPORTE MU EC</b><small id="chat-state">Verificando disponibilidade do portal…</small></div><button id="chat-close" aria-label="Fechar chat" type="button">×</button></div><div class="chat-log" id="chat-log" aria-live="polite"><p class="chat-notice">Envie sua dúvida à equipe. Um moderador humano responderá quando estiver disponível; não há resposta automática nem atendimento imediato garantido.</p></div><form class="chat-form" id="chat-form"><label for="chat-name">Como podemos chamar você?</label><input name="display_name" id="chat-name" placeholder="Seu nome ou apelido" minlength="3" maxlength="25" autocomplete="nickname" pattern="[a-zA-ZÀ-ÿ0-9_-]{3,25}" title="Use de 3 a 25 letras, números, hífen ou sublinhado, sem espaços." /><label for="chat-message">Mensagem</label><textarea name="message" id="chat-message" maxlength="1500" rows="2" placeholder="Conte como podemos ajudar…" required></textarea><button class="btn-gold" type="submit">ENVIAR MENSAGEM →</button></form><button class="chat-new" id="new-chat" type="button" hidden>Iniciar uma nova conversa</button><div class="chat-footnote">Nunca envie senhas, PINs ou dados financeiros pelo chat.</div></section>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="public.js" defer></script>
-  <script src="chat-live.js" defer></script>
+  <script src="public.js" defer></script><script src="chat-live.js" defer></script>
 </body>
 </html>

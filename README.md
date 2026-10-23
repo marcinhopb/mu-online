@@ -1,62 +1,76 @@
-# MU Legacy Arena — site e suporte, sem Lovable
+# MU EC — MU 100% Editável
 
-Portal original inspirado na **estrutura dos sites clássicos de MU**, sem copiar código, logos, textos nem imagens proprietários do MuAwaY. Projeto desenvolvido diretamente em HTML, CSS, JavaScript e Node.js, sem serviços pagos e sem dependências npm.
+**Seu equipamento. Sua estratégia. Sua vitória.** Portal original de MU com foco em PvP, área do jogador e atendimento humano. HTML, CSS, JavaScript e Node.js nativos, sem dependências npm obrigatórias e sem serviços pagos.
 
-## Telas implementadas
+As decisões do produto estão em [docs/MU-EC-PROJETO-MESTRE.md](docs/MU-EC-PROJETO-MESTRE.md). O jogo completo ainda não está integrado: este repositório implementa o site e um backend de desenvolvimento, não um GameServer.
 
-- `index.html`: portal público no estilo de site de MMORPG clássico, home, notícias, cadastro, login, downloads, ranking, eventos, loja, guildas, ajuda e chat.
-- `portal.html`: painel de jogo demonstrativo com personagens, editor +0 a +11, rankings, sorteios +13, premiação +15, carteira e mercado **somente de simulação**.
-- `staff.html`: área de **moderador/administrador**, com atendimento de chat e gestão de notícias.
-- `server.mjs`: backend Node nativo para cadastro e login em banco JSON local, sessões HttpOnly, mensagens de suporte e notícias, somente para uma instância de teste.
+## Executar o site e a API
 
-## Rodar GRATUITAMENTE em seu computador (chat e login funcionando)
+Requer **Node.js 20 ou superior**; validado com Node.js 24. Não é necessário executar `npm install` nem compilar assets.
 
-Requer Node.js 20+ (recomendado Node 22+). No terminal na pasta deste projeto:
+Na raiz do projeto:
 
 ```bash
-MU_ADMIN_EMAIL="seu-email@exemplo.com" MU_ADMIN_PASSWORD="defina-uma-senha-longa" node server.mjs
-```
-
-No Windows PowerShell:
-
-```powershell
-$env:MU_ADMIN_EMAIL = "seu-email@exemplo.com"
-$env:MU_ADMIN_PASSWORD = "defina-uma-senha-longa"
 node server.mjs
 ```
 
-O administrador precisa de senha com pelo menos 12 caracteres. Nenhuma senha padrão vem no projeto. Acesse `http://localhost:3000/` e faça login com a conta configurada; abra `http://localhost:3000/staff.html` para responder chats. Em outra janela privada, um visitante pode abrir uma conversa no canto inferior direito. O sistema guarda os registros em `.data/store.json` (ignorados pelo Git). **Não coloque credenciais em arquivo público nem no repositório.**
+Abra a porta 3000 no navegador local. O servidor usa o endereço de loopback por padrão. `index.html` é o site público, `portal.html` é o painel do jogador e `staff.html` é a central da equipe. A API deve ser servida na mesma origem do frontend.
 
-## Publicação gratuita da parte estática
+| Variável | Uso |
+| --- | --- |
+| `PORT` | Porta HTTP; padrão `3000`. |
+| `MU_HOST` | Interface de rede; padrão `127.0.0.1`. Use outra interface apenas no ambiente que pretende disponibilizar. |
+| `MU_DATA_FILE` | Caminho do banco JSON; padrão `.data/store.json`, ignorado pelo Git. |
+| `MU_ADMIN_EMAIL` | E-mail da conta administrativa inicial. |
+| `MU_ADMIN_PASSWORD` | Senha inicial de 12 a 256 caracteres, fornecida com segurança ao processo. |
+| `MU_ADMIN_NICK` | Nome inicial do administrador; padrão `Administrador`. |
+| `MU_HTTPS` | `true` adiciona `Secure` ao cookie atrás de HTTPS. Não habilita TLS no Node. |
 
-GitHub Pages pode servir o site visualmente sem custo no repositório público. Na configuração do GitHub acesse `Settings → Pages → Source: Deploy from a branch → main → /(root) → Save`.
+O site inicia sem credenciais administrativas. Para ativar a primeira conta da equipe, forneça `MU_ADMIN_EMAIL` e `MU_ADMIN_PASSWORD` por variáveis de ambiente locais seguras e reinicie o servidor. Não salve valores no Git, em scripts públicos ou em conversas. A conta só é criada se ainda não houver administrador; essas variáveis não alteram uma senha já cadastrada.
 
-O GitHub Pages **não executa Node.js**, então cadastro, login e chat humano **não funcionam** em hospedagem puramente estática. Para atendimento real nessa publicação, há duas opções:
+Cadastre as demais contas pelo site e atribua funções na central autenticada. Nenhuma senha administrativa padrão é fornecida.
 
-- Hospedar o backend `server.mjs` em um ambiente com HTTPS, armazenamento persistente e monitoramento e configurar o frontend para usar a mesma origem (requer arquitetura de proxy, reverse proxy ou adaptação da API);
-- Criar uma conta gratuita no tawk.to e preencher em `chat-live.js` os IDs públicos `tawkPropertyId` e `tawkWidgetId` obtidos no código do widget oficial. O script então integra o chat humano ao site publicado sem exigir backend próprio. O moderador responde pelo painel do tawk.to (exige ação do titular da conta para ativar; não vem ativado por padrão).
+## O que funciona neste backend
 
-É incorreto anunciar o chat como online enquanto nenhuma dessas opções estiver configurada.
+- Cadastro e login da conta do site, identificação da sessão e logout.
+- Atendimento humano: abertura de conversa pelo visitante, histórico protegido, atribuição a um atendente, respostas e encerramento pela equipe.
+- Notícias e agenda de eventos publicadas pela equipe, lidas nas páginas públicas.
+- Diretório público da equipe sem e-mails ou indicadores inventados de presença.
+- Administração de funções, com bloqueio da remoção do último administrador.
 
-## Segurança e limites
+| Função | Atendimento | Notícias e eventos | Gestão de funções |
+| --- | --- | --- | --- |
+| Jogador | Sua conversa com token | Leitura pública | Não |
+| Moderador | Sim | Leitura pública | Não |
+| GM | Sim | Publicar e remover | Não |
+| Administrador | Sim, incluindo reatribuição | Publicar e remover | Sim |
 
-- A API guarda senhas com scrypt + salt; sessões em cookies HttpOnly SameSite Strict; requisições JSON limitadas; rate limit básico e verificação de origem para POST.
-- O armazenamento JSON é suficiente **somente para protótipos e baixíssimo tráfego em instância única**. Produção pública requer banco transacional, TLS, configuração anti-CSRF mais forte, logs, monitoramento, backup, proteção contra brute force distribuído, recuperação de senha e autenticação aprimorada.
-- Chat web permite conversa real entre visitante e moderador, quando o servidor Node estiver de pé; não há respostas automáticas fingindo ser humano.
-- GameServer, Dark Lord real, inventários reais, Donate, QR Code, Pix, saques e transações entre jogadores **não estão integrados nem operacionais**.
-- Status de servidor e rankings exibidos na web são claramente marcados como projeto/demonstração.
-- Não há custos de desenvolvimento nem créditos do Lovable. Hospedagem pública dinâmica e parceiros financeiros podem gerar custos ou limites.
+A autorização acontece no servidor. Um atendente não administrador não pode assumir ou responder uma conversa atribuída a outra pessoa. O chat é uma fila de atendimento e não garante que haja um moderador disponível naquele instante.
 
-## Regras desejadas para o futuro GameServer
+## Demonstrações e etapas futuras
 
-- BK, SM, ME, MG e DL com Command.
-- Edição de itens pertencentes ao jogador +0 a +11; +12..+15 exclusivos de eventos oficiais ou Donate.
-- Transparência visual nos itens +12..+15, não nos itens +0..+11.
-- Força do mesmo item relativa ao +11=100: +12=102, +13=105, +14=108, +15=111 (hipótese, não fórmula validada).
-- Ranking semanal: duas partes distintas aleatórias de um set +13, cinco coleções em rodízio. Ranking mensal: arma Full +15 conforme classe escolhida.
-- PvP competitivo mesmo para All +11 bem montado frente a +13/+14 incompletos.
-- TradePay com trava no GameServer, auditoria e provedor financeiro autorizado, **não implementado**.
+Personagens, inventário, editor, rankings, prêmios e TradePay são demonstrações explícitas. Os dados reais da conta do site não representam uma conta de jogo conectada. Saldos, saques, Pix, compras, Donate e concessão de itens reais não estão habilitados. Não há download de cliente ou fórum de terceiros configurado.
 
-## Direitos
+Preservam-se as regras: editor comum de +0 a +11; +12 a +15 reservados a eventos oficiais ou Donate futuro; BK, SM, ME, MG e DL com Command; ranking principal até +15; duas partes distintas do mesmo set +13 como prêmio semanal e arma Full Excellent +15 por classe como prêmio mensal. A curva de força do documento é uma hipótese que ainda precisa de duelos controlados.
 
-Nenhum cliente comercial de MU, asset do MuAwaY, logomarca oficial ou servidor proprietário está neste projeto. Identidade visual do portal é própria. A publicação de servidores e comercialização de itens depende dos direitos pertinentes.
+## Verificar
+
+Da raiz do projeto:
+
+```bash
+node --test tests/smoke.mjs tests/backend.mjs
+```
+
+Os testes iniciam servidores isolados com bancos temporários e credenciais exclusivas de teste. Cobrem cadastro, sessões, funções, permissões administrativas, privacidade, proteção de origem, corpo JSON, limites de tentativas, chat, notícias, eventos e persistência após reinício. Não alteram o banco de desenvolvimento. A suite não equivale a auditoria de segurança ou integração com jogo/pagamentos.
+
+Para confirmar disponibilidade da aplicação, `GET /api/health` deve responder `ok: true`, `service: "mu-ec-portal"` e `gameServer: "not_connected"`. Abra também as três páginas para verificar a interface.
+
+## Persistência e publicação
+
+Usuários, conversas, notícias e eventos ficam em um único arquivo JSON, com substituição atômica e escrita serializada. Sessões e limites de tentativas ficam em memória; reiniciar o servidor encerra sessões. Execute **uma única instância** por arquivo. Não use dados pessoais reais neste protótipo sem concluir a política e os controles de proteção de dados.
+
+Hospedagem pública ainda exige HTTPS, banco transacional, backups, monitoramento, recuperação de conta, revisão de segurança e políticas aprovadas. Os textos de termos e privacidade do site são informativos de desenvolvimento, não documentos jurídicos aprovados.
+
+GitHub Pages pode servir somente o frontend estático: não executa o Node e não torna login, chat ou central administrativa operacionais. Não há implantação pública verificada neste marco. O widget externo opcional permanece desativado; qualquer configuração posterior deve respeitar a privacidade, os limites gratuitos e a autorização do titular.
+
+A identidade e a arte do portal são próprias. Não há assets proprietários do MuAwaY nem cliente/servidor comercial neste pacote. Os direitos pertinentes ao MU Online/WEBZEN devem ser avaliados antes de operação comercial.

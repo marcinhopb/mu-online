@@ -3,40 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Protótipo gratuito do painel MU Legacy Arena: inventário, editor, rankings e TradePay demonstrativo." />
-  <title>MU Legacy Arena — Portal DEMO</title>
+  <meta name="theme-color" content="#111211" />
+  <meta name="description" content="Painel MU EC — MU 100% Editável. Sua conta do site e demonstrações de itens, rankings e eventos PvP." />
+  <title>MU EC — Painel do jogador</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#app">Ir para o conteúdo</a>
   <div class="shell">
-    <aside class="sidebar" id="sidebar">
-      <a href="index.html" class="brand" title="Voltar ao site"><div class="brand-mark">⚔</div><div><strong>MU LEGACY</strong><small>ARENA · 2017 EXPERIENCE</small></div></a>
-      <div class="demo-chip">● MODO DEMONSTRAÇÃO</div>
-      <p class="nav-label">NAVEGAÇÃO</p>
-      <nav id="nav" aria-label="Menu principal"><a href="index.html" title="Voltar à página inicial"><span>↩</span> Site principal</a>
-        <a href="#inicio" data-page="inicio"><span>⌂</span> Visão geral</a>
-        <a href="#personagens" data-page="personagens"><span>♜</span> Personagens</a>
-        <a href="#editor" data-page="editor"><span>⚒</span> Editor de itens</a>
-        <a href="#ranking" data-page="ranking"><span>♛</span> Ranking PvP</a>
-        <a href="#premios" data-page="premios"><span>✦</span> Premiações</a>
-        <a href="#mercado" data-page="mercado"><span>◇</span> Mercado TradePay</a>
-        <a href="#carteira" data-page="carteira"><span>▣</span> Carteira</a>
-        <a href="#admin" data-page="admin"><span>⚙</span> Administração</a>
-        <a href="#regras" data-page="regras"><span>ⓘ</span> Regras</a>
+    <aside class="sidebar" id="sidebar" aria-label="Painel do jogador">
+      <a href="index.html" class="brand" aria-label="MU EC — voltar ao site"><span class="brand-mark" aria-hidden="true">EC</span><span><strong>MU <em>EC</em></strong><small>MU 100% EDITÁVEL</small></span></a>
+      <div class="sidebar-account"><span class="account-avatar" aria-hidden="true">✦</span><div><b id="sidebar-user">Bem-vindo ao MU EC</b><small id="sidebar-session">Verificando sessão…</small></div></div>
+      <nav id="nav" aria-label="Navegação do painel">
+        <p class="nav-label">MINHA CONTA</p>
+        <a href="#inicio" data-page="inicio"><span aria-hidden="true">⌂</span> Visão geral</a>
+        <a href="#conta" data-page="conta"><span aria-hidden="true">◈</span> Detalhes da conta</a>
+        <a href="#jogo" data-page="jogo"><span aria-hidden="true">⚔</span> Jogo</a>
+        <a href="#personagens" data-page="personagens"><span aria-hidden="true">♜</span> Personagens</a>
+        <a href="#baus" data-page="baus"><span aria-hidden="true">▣</span> Baús</a>
+        <a href="#seguranca" data-page="seguranca"><span aria-hidden="true">⛨</span> Segurança</a>
+        <p class="nav-label demo-label">EXPLORE A DEMONSTRAÇÃO</p>
+        <a href="#editor" data-page="editor"><span aria-hidden="true">⚒</span> Editor de itens <small>DEMO</small></a>
+        <a href="#ranking" data-page="ranking"><span aria-hidden="true">♛</span> Ranking PvP</a>
+        <a href="#premios" data-page="premios"><span aria-hidden="true">✦</span> Premiações</a>
+        <a href="#mercado" data-page="mercado"><span aria-hidden="true">◇</span> TradePay <small>DEMO</small></a>
+        <a href="#carteira" data-page="carteira"><span aria-hidden="true">▤</span> Carteira <small>DEMO</small></a>
+        <a href="#regras" data-page="regras"><span aria-hidden="true">ⓘ</span> Regras do MU EC</a>
       </nav>
-      <div class="sidebar-bottom"><p><b>SEM GAME SERVER</b></p><small>Interface independente, sem Pix real e sem qualquer acesso a inventários de jogadores.</small></div>
+      <div class="sidebar-bottom"><p><b>GAMESERVER EM PREPARAÇÃO</b></p><small>Nenhum item ou valor real é movimentado.</small></div>
     </aside>
+    <button id="nav-backdrop" class="nav-backdrop" aria-label="Fechar navegação" hidden></button>
     <div class="workspace">
       <header class="topbar">
-        <button class="menu-btn" data-action="menu" title="Menu" aria-label="Abrir menu">☰</button>
-        <div class="crumb"><span>PORTAL</span><span class="crumb-sep">/</span><strong id="current-page">Visão geral</strong></div>
-        <div class="top-right"><span class="online-tag">◌ Servidor desconectado</span><span class="account">👤 Conta de teste</span></div>
+        <button class="menu-btn" id="menu-toggle" data-action="menu" aria-label="Abrir navegação" aria-controls="sidebar" aria-expanded="false">☰</button>
+        <a class="topbar-home" href="index.html">MU <b>EC</b></a>
+        <nav class="portal-links" aria-label="Links do site"><a href="index.html#noticias">Notícias</a><a href="index.html#suporte">Suporte</a><a href="index.html#loja">Shop</a><a href="index.html#guildas">Comunidade</a></nav>
+        <div class="top-right"><span class="account" id="topbar-user">Visitante</span><button class="text-button" id="logout-button" data-action="logout" hidden>Sair ↗</button><a class="text-button" id="login-link" href="index.html#login">Entrar ↗</a></div>
       </header>
-      <main id="app" role="main"></main>
-      <footer class="footer">MU Legacy Arena · Protótipo independente de Lovable · Nenhum valor financeiro ou item real é movimentado.</footer>
+      <div class="subbar"><div class="crumb"><a href="index.html">Início</a><span aria-hidden="true">/</span><span>Painel</span><span aria-hidden="true">/</span><strong id="current-page">Visão geral</strong></div><span class="site-status" id="site-status">Verificando conexão</span></div>
+      <main id="app" tabindex="-1"><div class="empty">Carregando painel…</div></main>
+      <noscript><p class="note">Ative o JavaScript para navegar no painel. <a href="index.html">Voltar ao site principal.</a></p></noscript>
+      <footer class="footer"><span>MU <b>EC</b> <span class="footer-divider">/</span> Seu equipamento. Sua estratégia. Sua vitória.</span><a href="index.html#privacidade">Privacidade</a><a href="staff.html">Central da equipe</a></footer>
     </div>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

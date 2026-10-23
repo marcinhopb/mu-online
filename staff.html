@@ -1,1 +1,85 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Central da Equipe · MU Legacy</title><link rel="stylesheet" href="public.css"><link rel="stylesheet" href="staff.css"></head><body><div class="thin-bar"><div class="wide thin-inner">⚔ MU LEGACY ARENA — CENTRAL DA EQUIPE <a href="index.html">← Voltar ao site</a></div></div><header class="masthead"><div class="wide mast-inner"><a href="index.html" class="logo"><span class="logo-medallion">⚙</span><span class="logo-words"><b>MU <i>LEGACY</i></b><small>ADMIN</small></span></a><p>Área restrita de moderadores e administradores. O controle do jogo real não está conectado.</p></div></header><main class="wide staff-main"><div id="permission" class="simple-panel">Verificando autenticação administrativa…</div><div id="admin-console" hidden><div class="staff-stats"><div class="panel"><div class="panel-title">JOGADORES REGISTRADOS</div><strong id="stat-users">—</strong></div><div class="panel"><div class="panel-title">CHATS ABERTOS</div><strong id="stat-chats">—</strong></div><div class="panel"><div class="panel-title">NOTÍCIAS PUBLICADAS</div><strong id="stat-news">—</strong></div></div><div class="staff-columns"><section class="panel"><div class="panel-title">☏ ATENDIMENTO AOS JOGADORES</div><div class="staff-panel-pad"><button class="btn-outline" id="refresh-chat">Atualizar conversas</button><div id="chats-list" class="chat-list"></div></div></section><section class="panel"><div class="panel-title">◈ CONVERSA SELECIONADA</div><div class="staff-panel-pad"><p id="selected-label" class="dim">Selecione uma conversa.</p><div id="selected-messages" class="mod-messages"></div><form id="staff-reply"><textarea id="reply-message" class="entry" rows="3" placeholder="Sua resposta ao jogador" required></textarea><div class="staff-actions"><button class="btn-gold">RESPONDER</button><button type="button" class="btn-outline" id="close-chat">Encerrar conversa</button></div></form></div></section></div><section class="panel"><div class="panel-title">✦ PUBLICAÇÃO DE NOTÍCIAS</div><div class="staff-panel-pad"><form class="form-grid" id="news-form"><label>Título<input id="news-title" class="entry" minlength="4" maxlength="100" required></label><label>Texto<textarea id="news-body" class="entry" rows="4" minlength="10" maxlength="2500" required></textarea></label><button class="btn-gold">PUBLICAR NOTÍCIA NO SITE</button></form><div id="news-list" style="margin-top:15px"></div></div></section><div class="muted-note">Este painel controla apenas o site e atendimento conectado a este backend. Não cria itens, altera inventários reais nem executa operações financeiras.</div></div></main><div id="toast" class="toast"></div><script src="staff.js" defer></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Central restrita da equipe MU EC: atendimento humano, notícias, eventos e permissões do site.">
+  <title>Central da equipe · MU EC</title>
+  <link rel="stylesheet" href="staff.css">
+  <script src="staff.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#staff-main">Pular para o conteúdo</a>
+  <header class="staff-header">
+    <a class="brand" href="index.html" aria-label="MU EC — voltar ao site"><span class="brand-seal" aria-hidden="true">EC</span><span><strong>MU <em>EC</em></strong><small>MU 100% EDITÁVEL</small></span></a>
+    <div class="header-label"><span class="eyebrow">CENTRAL DA EQUIPE</span><p>O cuidado com a comunidade começa aqui.</p></div>
+    <a class="text-link" href="index.html">← Voltar ao site</a>
+  </header>
+
+  <main id="staff-main" class="staff-main">
+    <section id="permission" class="gate" aria-live="polite"><span class="eyebrow">ACESSO RESTRITO</span><h1>Verificando sua sessão</h1><p>Conectando à central de atendimento.</p></section>
+    <div id="admin-console" hidden>
+      <section class="staff-intro">
+        <div><span class="eyebrow">OPERAÇÃO DO SITE</span><h1>Central da equipe<span class="title-dot">.</span></h1><p>Atendimento humano, comunicação e uma comunidade bem cuidada.</p></div>
+        <div class="staff-identity"><span class="identity-mark" aria-hidden="true">✦</span><div><strong id="staff-name"></strong><small id="staff-role"></small></div><button id="staff-logout" class="button subtle" type="button">Sair</button></div>
+      </section>
+
+      <p class="scope-notice"><span aria-hidden="true">ⓘ</span> Esta central administra o site. GameServer, inventários e pagamentos continuam desconectados.</p>
+      <div class="staff-stats" aria-label="Resumo do site">
+        <article class="stat-card"><span>Contas do site</span><strong id="stat-users">—</strong><small>Cadastros locais</small></article>
+        <article class="stat-card"><span>Conversas abertas</span><strong id="stat-chats">—</strong><small>Aguardando a equipe</small></article>
+        <article class="stat-card" data-content-only hidden><span>Notícias</span><strong id="stat-news">—</strong><small>Publicadas no portal</small></article>
+        <article class="stat-card" data-content-only hidden><span>Eventos na agenda</span><strong id="stat-events">—</strong><small>Informativos do site</small></article>
+      </div>
+
+      <nav class="staff-nav" aria-label="Seções da equipe">
+        <a href="#atendimento" data-view-link="atendimento" aria-current="page">Atendimento <span aria-hidden="true">↗</span></a>
+        <a href="#noticias" data-view-link="noticias" data-content-only hidden>Notícias</a>
+        <a href="#eventos" data-view-link="eventos" data-content-only hidden>Eventos</a>
+        <a href="#equipe" data-view-link="equipe" data-admin-only hidden>Permissões</a>
+        <span class="sync-label" id="sync-status" role="status">Atualizando…</span>
+      </nav>
+      <p id="staff-error" class="inline-error" role="alert" hidden></p>
+
+      <section id="view-atendimento" class="view" aria-labelledby="support-heading">
+        <div class="section-heading"><div><span class="eyebrow">ESCUTAR. ORIENTAR. RESOLVER.</span><h2 id="support-heading">Atendimento aos jogadores</h2></div><button class="button outline" type="button" id="refresh-chat">Atualizar</button></div>
+        <div class="support-grid">
+          <aside class="panel queue-panel" aria-label="Fila de atendimento">
+            <div class="panel-heading"><h3>Conversas</h3><label class="filter-label">Exibir <select id="chat-filter"><option value="open">Abertas</option><option value="all">Todas</option><option value="mine">Minhas abertas</option><option value="closed">Encerradas</option></select></label></div>
+            <div id="chats-list" class="chat-list"><p class="empty-state">Carregando conversas…</p></div>
+          </aside>
+          <section class="panel conversation-panel" aria-labelledby="conversation-heading">
+            <div class="panel-heading conversation-heading"><div><h3 id="conversation-heading">Conversa selecionada</h3><p id="selected-label" class="muted">Escolha uma solicitação na fila.</p></div><span id="conversation-status" class="badge" hidden></span></div>
+            <div id="selected-messages" class="mod-messages" role="log" aria-label="Histórico da conversa" aria-live="polite"><div class="conversation-placeholder"><span aria-hidden="true">✉</span><p>Cada mensagem merece atenção.</p><small>Selecione uma conversa para ver o histórico e responder.</small></div></div>
+            <div id="assignment-controls" class="assignment-controls" hidden><p id="assigned-label"></p><button id="claim-chat" class="button subtle" type="button">Assumir atendimento</button><div data-admin-only hidden><label for="chat-assignee" class="sr-only">Responsável pela conversa</label><select id="chat-assignee"><option value="">Sem responsável</option></select><button id="assign-chat" class="button subtle" type="button">Atribuir</button></div></div>
+            <form id="staff-reply" class="reply-form">
+              <label for="reply-message">Sua resposta ao jogador</label>
+              <textarea id="reply-message" rows="3" maxlength="1500" placeholder="Escreva uma orientação clara e acolhedora…" required disabled></textarea>
+              <div class="reply-footer"><small>Não solicite senhas, PINs ou dados bancários.</small><div class="button-group"><button type="button" class="button outline" id="close-chat" disabled>Encerrar conversa</button><button class="button gold" id="send-reply" disabled>Enviar resposta <span aria-hidden="true">↗</span></button></div></div>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-noticias" class="view" aria-labelledby="news-heading" hidden>
+        <div class="section-heading"><div><span class="eyebrow">A VOZ DA COMUNIDADE</span><h2 id="news-heading">Notícias do portal</h2></div><a class="text-link" href="index.html#noticias">Ver no site ↗</a></div>
+        <div class="editor-grid"><section class="panel editor-panel"><h3>Publicar notícia</h3><p class="muted">A publicação aparece no portal. Diferencie anúncios de desenvolvimento e recursos disponíveis.</p><form id="news-form" class="form-grid"><label for="news-title">Título</label><input id="news-title" minlength="4" maxlength="100" required placeholder="O que a comunidade precisa saber?"><label for="news-body">Conteúdo</label><textarea id="news-body" rows="8" minlength="10" maxlength="2500" required placeholder="Escreva a notícia…"></textarea><button class="button gold">Publicar notícia</button></form></section><section class="panel editor-panel"><h3>Publicações recentes</h3><div id="news-list" class="content-list"></div></section></div>
+      </section>
+
+      <section id="view-eventos" class="view" aria-labelledby="events-heading" hidden>
+        <div class="section-heading"><div><span class="eyebrow">ENCONTROS QUE CRIAM HISTÓRIAS</span><h2 id="events-heading">Agenda de eventos</h2></div><a class="text-link" href="index.html#eventos">Ver no site ↗</a></div>
+        <div class="editor-grid"><section class="panel editor-panel"><h3>Adicionar evento</h3><p class="muted">A agenda é informativa. Publicar não abre um evento no jogo nem concede prêmios.</p><form id="event-form" class="form-grid"><label for="event-title">Título</label><input id="event-title" minlength="4" maxlength="100" placeholder="Nome do evento" required><label for="event-start">Data e horário <small>(horário local do navegador)</small></label><input id="event-start" type="datetime-local" required><label for="event-description">Descrição e regras</label><textarea id="event-description" rows="6" minlength="10" maxlength="2500" placeholder="Informe modalidade, requisitos e estado de planejamento…" required></textarea><button class="button gold">Publicar na agenda</button></form></section><section class="panel editor-panel"><h3>Eventos cadastrados</h3><div id="events-list" class="content-list"></div></section></div>
+      </section>
+
+      <section id="view-equipe" class="view" aria-labelledby="team-heading" hidden>
+        <div class="section-heading"><div><span class="eyebrow">ACESSO COM RESPONSABILIDADE</span><h2 id="team-heading">Permissões da equipe</h2></div><button class="button outline" type="button" id="refresh-users">Atualizar contas</button></div>
+        <div class="role-explainer"><article><span>01</span><h3>Moderador</h3><p>Atende, atribui a si e encerra conversas de suporte.</p></article><article><span>02</span><h3>Game Master</h3><p>Atendimento, notícias e agenda de eventos do site.</p></article><article><span>03</span><h3>Administrador</h3><p>Gerencia a equipe e os responsáveis pelo atendimento.</p></article></div>
+        <section class="panel editor-panel"><label class="user-search" for="user-search">Buscar conta <input id="user-search" type="search" placeholder="Apelido ou e-mail" autocomplete="off"></label><p class="muted">As funções valem apenas para este site. O servidor verifica cada alteração e mantém ao menos um administrador.</p><div id="users-list" class="users-list"></div></section>
+      </section>
+    </div>
+  </main>
+  <footer class="staff-footer"><a class="footer-brand" href="index.html">MU EC</a><p>Seu equipamento. Sua estratégia. Sua vitória.</p><small>Central local de desenvolvimento · Sem operações financeiras ou acesso ao jogo.</small></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

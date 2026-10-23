@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="720" y1="0" x2="720" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#344236"/><stop offset="1" stop-color="#19251d"/></linearGradient>
+    <radialGradient id="moon"><stop stop-color="#e3d6a3" stop-opacity=".45"/><stop offset="1" stop-color="#d6d5aa" stop-opacity="0"/></radialGradient>
+    <linearGradient id="stone" x1="820" y1="100" x2="820" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#3b493a"/><stop offset="1" stop-color="#131e16"/></linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1100v400H0z"/>
+  <circle cx="808" cy="85" r="137" fill="url(#moon)"/><circle cx="808" cy="85" r="34" fill="#dfd7b7" opacity=".29"/>
+  <path d="m350 280 105-92 55 51 77-100 64 106 98-79 92 99 68-61 81 71 110-82v207H350z" fill="#4e5c4930"/>
+  <path d="m200 350 123-90 97 63 144-58 58 47 82-65 147 77 80-71 169 95v52H200z" fill="#273a29"/>
+  <g fill="url(#stone)" stroke="#738061" stroke-opacity=".25">
+    <path d="M671 352V181h-9l38-54 37 54h-9v171zM823 348V144h-11l35-68 36 68h-11v204zM758 341V108h-10l37-63 38 63h-11v233z"/>
+    <path d="M709 218h23v-12h16v12h20v-12h16v12h23v-12h16v12h28v120H709zM623 369V252h-8l28-45 28 45h-8v117zM876 369V229h-8l33-54 31 54h-9v140z"/>
+    <path d="M655 282h23v-12h14v12h22v-12h14v12h22v-12h14v12h24v-12h14v12h23v-12h14v12h23v-12h14v12h25v-12h14v12h22v109H655z"/>
+  </g>
+  <g fill="#d3bb79" opacity=".45"><path d="M782 141h6v14h-6zM843 171h6v15h-6zM697 208h6v14h-6zM898 255h6v13h-6zM640 277h6v13h-6zM723 310h6v13h-6zM850 310h6v13h-6z"/></g>
+  <path d="M771 391v-55a20 20 0 0 1 40 0v55" fill="#101a12" stroke="#758063" stroke-opacity=".3"/>
+  <path d="m781 46 1-23 21 8-20 8m63 37 1-21 20 8-19 7" stroke="#9e9969" opacity=".55"/>
+  <path d="M0 400v-39l111-22 158 31 178-22 114 18 127-22 139 16 113-25 160 23v42z" fill="#111e14"/>
+  <path d="m610 400 169-39 35 1-113 38" fill="#9fa581" opacity=".1"/>
+  <path d="M948 80q9-8 18 0 8-8 16 0M1007 118q7-7 14 0 7-7 14 0" stroke="#b9bea2" opacity=".25"/>
+</svg>
