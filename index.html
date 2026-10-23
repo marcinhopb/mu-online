@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Protótipo gratuito do painel MU Legacy Arena: inventário, editor, rankings e TradePay demonstrativo." />
+  <title>MU Legacy Arena — Portal DEMO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">⚔</div><div><strong>MU LEGACY</strong><small>ARENA · 2017 EXPERIENCE</small></div></div>
+      <div class="demo-chip">● MODO DEMONSTRAÇÃO</div>
+      <p class="nav-label">NAVEGAÇÃO</p>
+      <nav id="nav" aria-label="Menu principal">
+        <a href="#inicio" data-page="inicio"><span>⌂</span> Visão geral</a>
+        <a href="#personagens" data-page="personagens"><span>♜</span> Personagens</a>
+        <a href="#editor" data-page="editor"><span>⚒</span> Editor de itens</a>
+        <a href="#ranking" data-page="ranking"><span>♛</span> Ranking PvP</a>
+        <a href="#premios" data-page="premios"><span>✦</span> Premiações</a>
+        <a href="#mercado" data-page="mercado"><span>◇</span> Mercado TradePay</a>
+        <a href="#carteira" data-page="carteira"><span>▣</span> Carteira</a>
+        <a href="#admin" data-page="admin"><span>⚙</span> Administração</a>
+        <a href="#regras" data-page="regras"><span>ⓘ</span> Regras</a>
+      </nav>
+      <div class="sidebar-bottom"><p><b>SEM GAME SERVER</b></p><small>Interface independente, sem Pix real e sem qualquer acesso a inventários de jogadores.</small></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="menu-btn" data-action="menu" title="Menu" aria-label="Abrir menu">☰</button>
+        <div class="crumb"><span>PORTAL</span><span class="crumb-sep">/</span><strong id="current-page">Visão geral</strong></div>
+        <div class="top-right"><span class="online-tag">◌ Servidor desconectado</span><span class="account">👤 Conta de teste</span></div>
+      </header>
+      <main id="app" role="main"></main>
+      <footer class="footer">MU Legacy Arena · Protótipo independente de Lovable · Nenhum valor financeiro ou item real é movimentado.</footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,35 +1,43 @@
-# MU Legacy Arena — Portal & Painel (PROTÓTIPO DEMO)
+# MU Legacy Arena — edição independente, sem créditos Lovable
 
-Frontend administrativo e portal de comunidade para um MMORPG privado clássico **original**.
-Não é game server, não está integrado ao jogo, não processa pagamentos. Sem assets proprietários.
+Este pacote é uma **primeira versão funcional de demonstração do portal web** para um servidor de RPG clássico inspirado em MU 2017 com Dark Lord. Foi desenvolvido diretamente em HTML, CSS e JavaScript — **não é necessário Lovable, npm, servidor web ou cadastro** para abrir o protótipo.
 
-## Rotas
-`/` home · `/jogador` painel · `/editor` editor de itens · `/rankings` PvP · `/premios` · `/mercado` TradePay (demo) · `/carteira` (simulada) · `/admin` (demonstrativo) · `/regras` FAQ
+## Como abrir
 
-## Estado
-Todo estado é local (`src/lib/demo-store.ts`, localStorage). Nunca SQL real, nenhum backend provisionado.
+1. Extraia o arquivo ZIP em uma pasta.
+2. Dê dois cliques em `index.html` para abrir no navegador moderno.
+3. Explore editor de itens, rankings, premiações e negociação DEMO pelo menu.
 
-## Regras de domínio (`src/lib/game-rules.ts`)
-- Classes BK, SM, ME, MG e **DL obrigatório** com atributo **Command**.
-- Editor do jogador: +0..+11. **Enforcement server-side futuro** (o cliente só pré-valida).
-- +12..+15: distribuição premium **somente eventos oficiais e Donate**.
-- Aparência transparente só +12..+15 — renderização futura no cliente de jogo.
-- Força relativa do mesmo item: +11=100, +12=102, +13=105, +14=108, +15=111 — **metas configuráveis de teste**, balanceamento não comprovado.
-- Objetivo: +11 ALL completo + build estratégica deve ter chances contra +13/+14 incompleto.
-- Ranking principal aceita todos os itens até +15.
-- Prêmios: semanal = 2 partes distintas do mesmo set +13 (rodízio Crimson/Obsidian/Celestial/Sovereign/Phantom); evento semanal = 1 parte; mensal = 1 arma +15 da classe escolhida.
-- Economias e recompensas **não são reais**.
+Os dados de exemplo e as configurações do inventário ficam no `localStorage` do navegador. Limpar os dados do navegador apaga a demonstração. O botão "Restaurar demonstração local" pode reiniciar os dados.
 
-## Integração futura (`src/lib/api-contracts.ts`)
-Browser → API Gateway → Serviço do Portal → fila → Bridge Windows → GameServer / SQL Server.
-- **Nunca** conectar o browser diretamente à base de inventário.
-- **Anti-dupe**: serial único por item emitido pelo servidor; serial duplicado → quarentena + alerta.
-- **Inventory ownership**: validar accountId + characterId + serial + inventoryVersion (lock otimista) em toda operação.
-- **Item reservation**: item anunciado fica travado no jogo até liquidar/cancelar/expirar (TTL).
-- **Webhooks idempotentes**: `Idempotency-Key`/`eventId` + tabela de eventos processados; assinatura HMAC.
-- **Compensações (saga)**: cada etapa tem ação inversa (unreserve, refund, devolver item) auditada.
-- **Pagamentos**: apenas via provedor de pagamento regulado, com KYC e conciliação. Não implementado.
-- Escrow: listed → reserved → awaiting_payment → paid → pending_delivery → delivered → settled (+ cancelled/refunded).
+## O que está realmente implementado
 
-## Testes
-`bunx vitest run src/test/game-rules.test.ts`
+- Layout completo e adaptável a desktop/celular; 9 telas navegáveis.
+- Inventário de teste com itens, classes e atributos.
+- Editor interativo com limite +11, Luck, Skill e whitelists de Excellent por tipo. +12 a +15 bloqueados e marcados como premium.
+- Ranking diário/semanal/mensal com seleção de classe (dados fictícios).
+- Sorteio aleatório demonstrativo de duas partes distintas de um set +13, com cinco coleções em rodízio.
+- Prêmios mensais com arma +15 e suporte à classe DL.
+- Mercado DEMO com fluxo de reserva → pagamento simulado → entrega simulada → repasse simulado.
+- Carteira demonstrativa, sem depósitos ou saques reais.
+- Página administrativa com metas de balanceamento e regras do projeto.
+
+## O que **não** foi implementado
+
+- Não há cliente de jogo, MuServer, SQL Server, personagem real ou integração com inventário.
+- Não há autenticação real. "Conta de teste" é somente ficcional.
+- Não há pagamentos Pix reais, QR Code financeiro, fundos, escrow, saque ou crédito verdadeiro.
+- Não há loja Donate operacional nem emissão de itens premium reais.
+- Valores/nomes dos itens e rankings são fictícios; estatísticas do PvP são hipóteses de design, não resultados de teste.
+
+## Requisitos de produção
+
+Para evoluir o projeto para servidor real, é necessário confirmar a base técnica do GameServer compatível com DL, licenças de uso, esquema de inventário e seriais, regras de opção dos itens, arquitetura de autenticação segura e provedor de pagamentos autorizado que aceite o modelo de negócio. Consultar `docs/arquitetura.md`.
+
+## Custos
+
+Este pacote, rodando localmente, é gratuito e **não gasta créditos do Lovable**. Isso não implica que operar online com proteção, cliente de jogo, hospedagem e transações financeiras seja gratuito.
+
+## Direitos e propriedade intelectual
+
+O protótipo usa símbolos tipográficos e nomes inventados, e não inclui arquivos, texturas, logotipos ou código proprietário do MU Online, MuAwaY ou WEBZEN. Publicar um jogo comercial requer avaliação dos direitos de uso pertinentes.
